@@ -1,4 +1,5 @@
 import productRepository from "../repositories/product-repository";
+import {Product} from "@prisma/client";
 
 async function getProducts() {
   const products = await productRepository.getProducts();
@@ -15,13 +16,14 @@ async function getProduct(id: number) {
   return product;
 }
 
-async function createProduct(post) {
+async function createProduct(post: Product) {
   return await productRepository.createProduct(post);
 }
 
 const postService = {
   getProducts,
-  createProduct
+  createProduct,
+  getProduct
 }
 
 export default postService;
